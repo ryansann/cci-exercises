@@ -14,10 +14,10 @@ template <typename T>
 class ArrayList {
   
   private:
-    const static int initialSize = 2; // initial number of elements
+    const static int initialCapacity = 2; // initial number of elements
     const static int reallocationMultiplier = 2; // multiplier for reallocating array
     int size; // this tracks numnber of elements in arrayList
-    int realSize; // this tracks current max capacity of arrayList
+    int maxCapacity; // this tracks current max capacity of arrayList
     T *arrayList;
 
   public:
@@ -28,6 +28,9 @@ class ArrayList {
 
     // operator overloads
     T &operator[](int index);
+
+    // getters
+    int getSize();
 
     // array ops
     void appendElement(T &element);
@@ -43,8 +46,8 @@ using namespace std;
 template <typename T>
 ArrayList<T>::ArrayList() {
   size = 0;
-  realSize = initialSize;
-  arrayList = new T[realSize];
+  maxCapacity = initialCapacity;
+  arrayList = new T[maxCapacity];
 }
 
 template <typename T>
@@ -67,14 +70,19 @@ T &ArrayList<T>::operator[](int index) {
   return arrayList[index]; // return reference
 }
 
+template <typename T>
+int ArrayList<T>::getSize() {
+  return size;
+}
+
 // Resize logic is in this method
 template <typename T>
 void ArrayList<T>::appendElement(T &element) {
-  cout << "Appending: " << element << '\n';
-  if ((size + 1) > realSize) { // we hit the upper bound on the number of T elements arrayList can hold
+  cout << "Appending element with address: " << &element << '\n';
+  if ((size + 1) > maxCapacity) { // we hit the upper bound on the number of T elements arrayList can hold
     cout << "Resize Operation Triggered" << '\n';
-    realSize *= reallocationMultiplier;
-    T *temp = new T[realSize]; // allocate a bigger chunk of memory for arrayList
+    maxCapacity *= reallocationMultiplier;
+    T *temp = new T[maxCapacity]; // allocate a bigger chunk of memory for arrayList
     for (int i = 0; i < size; i++) {
       temp[i] = arrayList[i]; // copy our values over O(n)
     }
@@ -105,17 +113,17 @@ void ArrayList<T>::clear() {
   if (arrayList) {
     delete[] arrayList; // free memory allocated for arrayList
     size = 0;
-    arrayList = new T[initialSize];
-    realSize = initialSize;
+    arrayList = new T[initialCapacity];
+    maxCapacity = initialCapacity;
   }
 }
 
 template <typename T>
 void ArrayList<T>::print() {
   cout << "Current arrayList size = " << size << '\n';
-  cout << "Current arrayList capacity = " << realSize << '\n';
+  cout << "Current arrayList capacity = " << maxCapacity << '\n';
   for(int i = 0; i < size; i++) {
-    cout << "ArrayList[" << i << "] = " << arrayList[i] << '\n';
+    cout << "ArrayList[" << i << "] = " << "&" << &arrayList[i] << '\n';
   }
 }
 
