@@ -5,13 +5,18 @@ using namespace std;
 
 int main() {
 
-  ArrayList<int> arrayInt;
+  ArrayList<int> myArrayList;
 
-  //myArrayList[0] = 1;
+  int first = 1, second = 10, third = 100;
 
-  cout << "HELLO" << endl;
-
-  //myArrayList.print();
+  myArrayList.appendElement(first);
+  myArrayList.appendElement(second);
+  myArrayList.print();
+  myArrayList.appendElement(third);
+  myArrayList.print();
+  myArrayList.deleteElement(1);
+  myArrayList.print();
 
   return 0;
+  
 }

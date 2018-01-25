@@ -1,5 +1,6 @@
 // ArrayList.h
 // Dynamically Resizing Templated Array
+// NOTE: Definitions must go in .h file because of templating
 
 // Included Dependencies
 #include <iostream>
@@ -13,29 +14,25 @@ template <typename T>
 class ArrayList {
   
   private:
-    int size;
+    const static int initialSize = 2; // initial number of elements
+    const static int reallocationMultiplier = 2; // multiplier for reallocating array
+    int size; // this tracks numnber of elements in arrayList
+    int realSize; // this tracks current max capacity of arrayList
     T *arrayList;
-    void resize(int newSize);
 
   public:
     // instance ops
     ArrayList();
-    ArrayList(int s);
     ArrayList(const ArrayList<T> &original);
     ~ArrayList();
-
-    // getters setters
-    int getSize();
-    void setSize(int s);
 
     // operator overloads
     T &operator[](int index);
 
     // array ops
-    T get(int index);
-    void insert(int index, T element);
-    void append(T element);
-    T pop();
+    void appendElement(T &element);
+    void deleteElement(unsigned int index);
+    void clear();
     void print();
 
 };
@@ -43,85 +40,83 @@ class ArrayList {
 using namespace std;
 
 // Class Definitions
-// Public methods
 template <typename T>
 ArrayList<T>::ArrayList() {
-  ArrayList(1);
-}
-
-template <typename T>
-ArrayList<T>::ArrayList(int s) {
-  setSize(s);
-  arrayList = new T[size];
+  size = 0;
+  realSize = initialSize;
+  arrayList = new T[realSize];
 }
 
 template <typename T>
 ArrayList<T>::ArrayList(const ArrayList<T> &original) {
-  ArrayList<T> copy = ArrayList(original.getSize());
-  memcpy(copy.arrayList, original.arrayList, size * sizeof(T));
+  // this could be made more efficient by reducing number of resize opts
+  ArrayList<T> copy = ArrayList();
+  for(int i = 0; i < size; i++) {
+    copy.append(original[i]);
+  }
   return copy;
 }
 
 template <typename T>
 ArrayList<T>::~ArrayList() {
-  delete[] arrayList;
-}
-
-template <typename T>
-int ArrayList<T>::getSize() {
-  return size;
-}
-
-template <typename T>
-void ArrayList<T>::setSize(int s) {
-  size = s;
+  clear();
 }
 
 template <typename T>
 T &ArrayList<T>::operator[](int index) {
-  if ((index - 1) > getSize()) {
-    resize(2 * getSize()); // double the size
-  }
   return arrayList[index]; // return reference
 }
 
+// Resize logic is in this method
 template <typename T>
-T ArrayList<T>::get(int index) {
-  return arrayList[index];
-}
-
-template <typename T>
-void ArrayList<T>::insert(int index, T element) {
-  arrayList[index] = element;
-}
-
-template <typename T>
-void ArrayList<T>::append(T element) {
+void ArrayList<T>::appendElement(T &element) {
+  cout << "Appending: " << element << '\n';
+  if ((size + 1) > realSize) { // we hit the upper bound on the number of T elements arrayList can hold
+    cout << "Resize Operation Triggered" << '\n';
+    realSize *= reallocationMultiplier;
+    T *temp = new T[realSize]; // allocate a bigger chunk of memory for arrayList
+    for (int i = 0; i < size; i++) {
+      temp[i] = arrayList[i]; // copy our values over O(n)
+    }
+    delete[] arrayList; // free old array memory
+    arrayList = temp; // set arrayList to larger memory array
+  }
+  arrayList[size] = element; // perform append operation
+  size++;
   return;
 }
 
 template <typename T>
-T ArrayList<T>::pop() {
-  return;
+void ArrayList<T>::deleteElement(unsigned int index) {
+  if (index > (size - 1)) { // not in arrayList
+    return;
+  } else if (size == 1) { // arrayList is only one element, so clear it
+    clear();
+  } else { // shift elements past index over one to left
+    for (int i =  index; i < size; i++) {
+      arrayList[i] = arrayList[i + 1];
+    }
+    size--;
+  }
+}
+
+template <typename T>
+void ArrayList<T>::clear() {
+  if (arrayList) {
+    delete[] arrayList; // free memory allocated for arrayList
+    size = 0;
+    arrayList = new T[initialSize];
+    realSize = initialSize;
+  }
 }
 
 template <typename T>
 void ArrayList<T>::print() {
-  for(int i = 0; i < getSize(); i++) {
+  cout << "Current arrayList size = " << size << '\n';
+  cout << "Current arrayList capacity = " << realSize << '\n';
+  for(int i = 0; i < size; i++) {
     cout << "ArrayList[" << i << "] = " << arrayList[i] << '\n';
   }
-}
-
-// Private methods
-template <typename T>
-void ArrayList<T>::resize(int newSize) {
-  T *temp = new T[newSize];
-  for(int i = 0; i < getSize(); i++) {
-    temp[i] = arrayList[i];
-  };
-  delete[] arrayList;
-  arrayList = temp;
-  setSize(newSize);
 }
 
 #endif
