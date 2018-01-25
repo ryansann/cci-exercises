@@ -1,13 +1,10 @@
 // ArrayList.h
 // Dynamically Resizing Templated Array
 // NOTE: Definitions must go in .h file because of templating
+#pragma once
 
 // Included Dependencies
 #include <iostream>
-
-// Include Guard
-#ifndef __ARRAYLIST_H_INCLUDED__
-#define __ARRAYLIST_H_INCLUDED__
 
 // Class Interface
 template <typename T>
@@ -126,5 +123,3 @@ void ArrayList<T>::print() {
     cout << "ArrayList[" << i << "] = " << "&" << &arrayList[i] << '\n';
   }
 }
-
-#endif
