@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-  //ArrayList<int> myArrayList(1);
+  ArrayList<int> arrayInt;
 
   //myArrayList[0] = 1;
 
@@ -14,4 +14,4 @@ int main() {
   //myArrayList.print();
 
   return 0;
-};
+}
