@@ -32,4 +32,4 @@ console.log(`checkPermutation("a", "aa") = ${checkPermutation("a", "aa")}`);
 console.log(`checkPermutation("mr", "rm") = ${checkPermutation("mr", "rm")}`);
 console.log(`checkPermutation("hello", "lolhe") = ${checkPermutation("hello", "lolhe")}`);
 console.log(`checkPermutation("hello", "hello") = ${checkPermutation("hello", "hello")}`);
-console.log(`checkPermutation("HEllo", "hello") = ${checkPermutation("hello", "hello")}`);
+console.log(`checkPermutation("HEllo", "hello") = ${checkPermutation("HEllo", "hello")}`);
