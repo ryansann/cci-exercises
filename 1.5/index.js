@@ -68,5 +68,4 @@ console.log(`checkEdits('paleeee', 'bake'): ${checkEdits('paleeee', 'bake')}`);
 console.log(`checkEdits('pale', 'elap'): ${checkEdits('pale', 'elap')}`);
 
 // Improvements:
-// - make more modular
-// - break into separate cases for each edit operation
+// - combine checkReplace & checkInsert
