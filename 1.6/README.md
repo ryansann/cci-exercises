@@ -10,3 +10,6 @@ Implement a method to perform basic string compression using the counts of repea
 
 ### Improvements:  
 - leave single letters as is, i.e. aabcccccaaa -> a2bc5a3
+
+### Additions:  
+- implement a decompress method
