@@ -1,3 +1,3 @@
-#1.1  
-###Description:  
+# 1.1  
+### Description:  
 Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
