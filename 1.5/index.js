@@ -48,3 +48,8 @@ console.log(`checkEdits('pale', 'bale'): ${checkEdits('pale', 'bale')}`);
 console.log("Check false:");
 console.log(`checkEdits('pale', 'bake'): ${checkEdits('pale', 'bake')}`);
 console.log(`checkEdits('paleeee', 'bake'): ${checkEdits('paleeee', 'bake')}`);
+
+
+// Improvements:
+// - make more modular
+// - break into separate cases for each edit operation
