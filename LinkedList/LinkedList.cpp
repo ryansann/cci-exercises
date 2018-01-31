@@ -11,6 +11,7 @@ LinkedList::LinkedList() {
   tmp = 0;
 }
 
+// this prepends a node with data to the linked list
 void LinkedList::addNode(int data) {
   // create our new node
   Node *n = new Node();
@@ -22,20 +23,31 @@ void LinkedList::addNode(int data) {
   cur = head;
 }
 
+// this deletes the first node it finds that matches data
 void LinkedList::deleteNode(int data) {
-  cur = head; // reset current to head
-  tmp = head; // reset tmp to head
-  // cur ptr will lag behind by one element
-  while (tmp != 0) {
-    tmp = tmp->next;
-    if (tmp->data == data) {
-      cur->next = tmp->next;
-      delete tmp;
-    }
+  Node *del = 0;
+  cur = head;
+  tmp = head;
+  // tmp trails current / loop will exit once it finds a value to delete
+  while(cur && cur->data != data) {
+    tmp = cur;
     cur = cur->next;
   }
+  // cur will be non null if we found data to delete
+  if (cur) {
+    del = cur;
+    cur = cur->next;
+    delete del;
+    tmp->next = cur;
+  } else {
+    cout << "No node has data: " << data << ". Skipping delete operation" << '\n';
+  }
+  // reset pointers
+  cur = head;
+  tmp = head;
 }
 
+// simple print method for our linked list
 void LinkedList::print() {
   int nodeCount = 0;
   while(cur) {
@@ -43,4 +55,5 @@ void LinkedList::print() {
     nodeCount++;
     cur = cur->next;
   }
+  cout << '\n';
 }

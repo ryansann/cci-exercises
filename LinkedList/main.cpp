@@ -11,6 +11,8 @@ int main() {
   list.addNode(10);
   list.addNode(100);
   list.print();
+  list.deleteNode(10);
+  list.print();
 
   return 0;
 }
