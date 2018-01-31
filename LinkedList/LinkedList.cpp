@@ -38,8 +38,9 @@ void LinkedList::deleteNode(int data) {
 
 void LinkedList::print() {
   int nodeCount = 0;
-  while(cur->next) {
-    cout << "Node[" << nodeCount << "]: " << cur->data << " -->";
+  while(cur) {
+    cout << "Node[" << nodeCount << "]: " << cur->data << " --> ";
     nodeCount++;
+    cur = cur->next;
   }
 }
