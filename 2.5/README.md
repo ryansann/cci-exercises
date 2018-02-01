@@ -4,6 +4,7 @@ You have two numbers represented by a linked list, where each node contains a si
 
 ### Assumptions:  
 - uses LinkedList class so data in each node is a single int.  
+- assumes int in each node is only one digit  
 
 ### Example:   
 ```

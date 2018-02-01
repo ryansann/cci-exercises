@@ -12,12 +12,21 @@ LinkedList::LinkedList() {
   length = 0;
 }
 
-// this prepends a node with data to the linked list
+// this creates and prepends a node with data to the linked list
 void LinkedList::addNode(int data) {
   // create our new node
   Node *n = new Node();
   n->data = data;
   // add new node as new head
+  tmp = head;
+  head = n;
+  n->next = tmp;
+  cur = head;
+  length++;
+}
+
+// this prepends an already created node to the list (2.7)
+void LinkedList::addNode(Node *n) {
   tmp = head;
   head = n;
   n->next = tmp;
