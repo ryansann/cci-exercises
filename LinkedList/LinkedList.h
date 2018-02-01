@@ -19,6 +19,7 @@ class LinkedList {
     bool isPalindromePermutation(); // 2.6
     LinkedList buildReverseList(); // 2.6
     bool operator==(const LinkedList &rhs); // 2.6
+    Node* getLoopNode(); // 2.8
     int getLength() const;
     Node* getHead() const;
     void print();

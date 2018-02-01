@@ -7,6 +7,6 @@ Given a circular linked list, implement an algorithm that returns the node at th
 
 ### Example:  
 ```
-Input: A --> B --> C --> D --> E --> C (same C as earlier)
-Output: C
+Input: 1 --> 2 --> 3 --> 4 --> 2 (same 2 as earlier)
+Output: 2
 ```  
