@@ -6,9 +6,8 @@ Write code to partition a linked list around a value x, such that all nodes less
 - uses LinkedList class so data in each node is a single int.  
 
 ### Example:   
-1. 
 ```
-Input:         3 --> 5 --> 8 --> 5 --> 2 --> 1 -/->
-Arguments:     x = 5
-Output:        3 --> 1 --> 2 --> 10 --> 5 --> 5 --> 8 -/->
+List:   3 --> 5 --> 8 --> 5 --> 10 --> 2 --> 1 -/->
+Input:  x = 5
+Output: 3 --> 1 --> 2 --> 10 --> 5 --> 5 --> 8 -/->
 ```  
