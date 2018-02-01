@@ -36,9 +36,14 @@ void LinkedList::deleteNode(int data) {
   // cur will be non null if we found data to delete
   if (cur) {
     del = cur;
+    cout << "Removing node with data: " << del->data << '\n';
     cur = cur->next;
+    if (tmp != head) {
+      tmp->next = cur;
+    } else {
+      head = cur;
+    }
     delete del;
-    tmp->next = cur;
   } else {
     cout << "No node has data: " << data << ". Skipping delete operation" << '\n';
   }
@@ -49,6 +54,7 @@ void LinkedList::deleteNode(int data) {
 
 // simple print method for our linked list
 void LinkedList::print() {
+  cur = head;
   int nodeCount = 0;
   while(cur) {
     cout << "Node[" << nodeCount << "]: " << cur->data << " --> ";

@@ -10,6 +10,6 @@ class LinkedList {
     LinkedList();
     void addNode(int data);
     void deleteNode(int data);
-    void removeDupes(int data);
+    void removeDupes(); // 2.1
     void print();
 };
