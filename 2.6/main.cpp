@@ -81,14 +81,23 @@ bool isPalindrome(LinkedList &l) {
 }
 
 int main() {
-  LinkedList list = LinkedList();
+  LinkedList list = LinkedList(), list2 = LinkedList();
+  // true
   list.addNode(1);
   list.addNode(2);
   list.addNode(3);
   list.addNode(2);
   list.addNode(1);
   list.print();
-  cout << isPalindrome(list) << '\n';
+  cout << "isPalindrome: " << isPalindrome(list) << '\n';
+
+  // false
+  list2.addNode(1);
+  list2.addNode(2);
+  list2.addNode(3);
+  list2.addNode(1);
+  list2.print();
+  cout << "isPalindrome: " << isPalindrome(list2) << '\n';
 
   return 0;
 }
