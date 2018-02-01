@@ -13,5 +13,7 @@ class LinkedList {
     void deleteNode(int data);
     void removeDupes(); // 2.1
     Node* getKthFromLast(int k); // 2.2
+    void deleteNodeWithoutHead(Node *n); // 2.3
+    Node* getMiddleNode();
     void print();
 };
