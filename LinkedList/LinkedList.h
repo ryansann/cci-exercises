@@ -10,7 +10,7 @@ class LinkedList {
   public:
     LinkedList();
     void addNode(int data);
-    void addNode(Node* n);
+    void addNode(Node* n); // 2.7
     void deleteNode(int data);
     void removeDupes(); // 2.1
     Node* getKthFromLast(int k); // 2.2
