@@ -1,4 +1,4 @@
-// 
+// Find same node by reference in two lists
 #include <iostream>
 #include "../LinkedList/LinkedList.h"
 #include "../LinkedList/Node.h"
