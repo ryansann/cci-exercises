@@ -15,7 +15,7 @@ class LinkedList {
     Node* getKthFromLast(int k); // 2.2
     void deleteNodeWithoutHead(Node *n); // 2.3
     void partitionList(int x); // 2.4
-    Node* getMiddleNode();
+    bool isPalindrome(); // 2.6
     Node* getHead();
     void print();
 };
