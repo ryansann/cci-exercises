@@ -61,9 +61,9 @@ void LinkedList::print() {
   int nodeCount = 0;
   cout << "Length = " << length << " | List = ";
   while(cur && cur->next) {
-    cout << "Node[" << nodeCount << "]: " << cur->data << " --> ";
+    cout << cur->data << " --> ";
     nodeCount++;
     cur = cur->next;
   }
-  cout << "Node[" << nodeCount << "]: " << cur->data  << " -/->" << '\n';
+  cout << cur->data  << " -/->" << '\n';
 }

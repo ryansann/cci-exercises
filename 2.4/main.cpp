@@ -1,7 +1,11 @@
-// 
+// Partition list around a integer x
 #include <iostream>
 #include "../LinkedList/LinkedList.h"
 #include "../LinkedList/Node.h"
+
+void LinkedList::partionList(int x) {
+  
+}
 
 using namespace std;
 
