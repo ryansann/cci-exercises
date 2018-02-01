@@ -55,6 +55,11 @@ void LinkedList::deleteNode(int data) {
   tmp = head;
 }
 
+// simple getter so passed around lists can be iterated starting at their head
+Node* LinkedList::getHead() {
+  return head;
+}
+
 // simple print method for our linked list
 void LinkedList::print() {
   cur = head;
