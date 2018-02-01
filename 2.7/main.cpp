@@ -26,7 +26,7 @@ Node* doIntersectByReference(LinkedList &l1, LinkedList &l2) {
 int main() {
   LinkedList l1 = LinkedList(), l2 = LinkedList();
   Node *n = new Node();
-  cout << "&n: " << &n << '\n';
+  cout << "&n: " << n << '\n';
   n->data = 1234;
   l1.addNode(n);
   l1.addNode(10);
