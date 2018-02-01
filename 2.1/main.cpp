@@ -37,7 +37,6 @@ void LinkedList::removeDupes() {
 }
 
 int main() {
-
   LinkedList list = LinkedList();
   list.addNode(1);
   list.addNode(10);

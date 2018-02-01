@@ -6,6 +6,7 @@ class LinkedList {
     Node *head;
     Node *cur;
     Node *tmp;
+    int length;
   public:
     LinkedList();
     void addNode(int data);

@@ -9,6 +9,7 @@ LinkedList::LinkedList() {
   head = 0;
   cur = 0;
   tmp = 0;
+  length = 0;
 }
 
 // this prepends a node with data to the linked list
@@ -21,6 +22,7 @@ void LinkedList::addNode(int data) {
   head = n;
   n->next = tmp;
   cur = head;
+  length++;
 }
 
 // this deletes the first node it finds that matches data
@@ -44,6 +46,7 @@ void LinkedList::deleteNode(int data) {
       head = cur;
     }
     delete del;
+    length--;
   } else {
     cout << "No node has data: " << data << ". Skipping delete operation" << '\n';
   }
@@ -56,10 +59,11 @@ void LinkedList::deleteNode(int data) {
 void LinkedList::print() {
   cur = head;
   int nodeCount = 0;
-  while(cur) {
+  cout << "Length = " << length << " | List = ";
+  while(cur && cur->next) {
     cout << "Node[" << nodeCount << "]: " << cur->data << " --> ";
     nodeCount++;
     cur = cur->next;
   }
-  cout << '\n';
+  cout << "Node[" << nodeCount << "]: " << cur->data  << " -/->" << '\n';
 }
