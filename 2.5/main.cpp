@@ -34,7 +34,6 @@ LinkedList buildSumList(int sum) {
   return sumList;
 }
 
-
 // O(n) time
 // O(n) space
 LinkedList addLists(LinkedList l1, LinkedList l2) {

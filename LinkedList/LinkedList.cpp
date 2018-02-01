@@ -55,8 +55,12 @@ void LinkedList::deleteNode(int data) {
   tmp = head;
 }
 
+int LinkedList::getLength() const {
+  return length;
+}
+
 // simple getter so passed around lists can be iterated starting at their head
-Node* LinkedList::getHead() {
+Node* LinkedList::getHead() const {
   return head;
 }
 
