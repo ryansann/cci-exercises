@@ -8,6 +8,8 @@
 using namespace std;
 
 // helper
+// O(n) time
+// O(n) space
 int getListSum(LinkedList l) {
   int accumulator = 0, powerCount = 0;
   Node *cur = l.getHead();
@@ -20,6 +22,8 @@ int getListSum(LinkedList l) {
 }
 
 // helper
+// O(n) time
+// O(n) space
 LinkedList buildSumList(int sum) {
   LinkedList sumList = LinkedList();
   string sumString = to_string(sum);
@@ -30,6 +34,9 @@ LinkedList buildSumList(int sum) {
   return sumList;
 }
 
+
+// O(n) time
+// O(n) space
 LinkedList addLists(LinkedList l1, LinkedList l2) {
   int sum = getListSum(l1) + getListSum(l2);
   cout << "List sum is: " << sum << '\n';
