@@ -1,6 +1,6 @@
 // StackSet.h
 // Set of stacks implemented with a vector
-// The Stacks we will use our the implementation in
+// The Stacks we will use are the implementation in ../Stack/Stack.h
 // We'll never have a stack with 0 elements in this implementation
 //
 //        [ numStacks = 2, numElements = 8, capacity = 5 ]
