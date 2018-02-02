@@ -9,6 +9,7 @@ class LinkedList {
     int length;
   public:
     LinkedList();
+    ~LinkedList();
     void addNode(int data);
     void addNode(Node* n); // 2.7
     void deleteNode(int data);
@@ -22,5 +23,6 @@ class LinkedList {
     Node* getLoopNode(); // 2.8
     int getLength() const;
     Node* getHead() const;
+    void clear();
     void print();
 };

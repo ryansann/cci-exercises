@@ -12,6 +12,11 @@ LinkedList::LinkedList() {
   length = 0;
 }
 
+LinkedList::~LinkedList() {
+  clear();
+  return;
+}
+
 // this creates and prepends a node with data to the linked list
 void LinkedList::addNode(int data) {
   // create our new node
@@ -71,6 +76,21 @@ int LinkedList::getLength() const {
 // simple getter so passed around lists can be iterated starting at their head
 Node* LinkedList::getHead() const {
   return head;
+}
+
+void LinkedList::clear() {
+  cur = head;
+  while(cur) {
+    tmp = cur->next;
+    delete cur;
+    cur = tmp;
+  }
+  head = 0;
+  tmp = 0;
+  cur = 0;
+  length = 0;
+  //print();
+  return;
 }
 
 // simple print method for our linked list

@@ -12,6 +12,7 @@ int main() {
   list.print();
   list.deleteNode(10);
   list.print();
+  list.clear();
 
   return 0;
 }
