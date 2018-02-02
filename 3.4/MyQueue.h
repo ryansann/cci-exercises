@@ -1,7 +1,7 @@
 // MyQueue.h
 // Queue implemented with two stacks
 //
-//       [ size = 8 ]
+//       [ size = 8, enqueueState = true ]
 //
 //       top  
 //        |___     ___     ___     ___     ___
@@ -82,7 +82,7 @@ void MyQueue<T>::enqueue(StackNode<T> *n) {
 
 template <typename T>
 void MyQueue<T>::enqueue(T data) {
-  StackNode<T> *newNode = StackNode<T>();
+  StackNode<T> *newNode = new StackNode<T>();
   newNode->data = data;
   enqueue(newNode);
 }
@@ -109,7 +109,7 @@ void MyQueue<T>::print() {
   cout << "enqueueState: " << enqueueState << '\n';
   cout << "S1: ";
   s1->print();
-  cout << "\nS2: ";
+  cout << "S2: ";
   s2->print();
 }
 
