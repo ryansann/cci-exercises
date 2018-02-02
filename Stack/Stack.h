@@ -29,6 +29,7 @@ class Stack {
     void push(T data);
     StackNode<T>* peek();
     bool isEmpty();
+    int getSize();
     void print();
     void clear();
 };
@@ -85,6 +86,11 @@ bool Stack<T>::isEmpty() {
   } else {
     return false;
   }
+}
+
+template <typename T>
+int Stack<T>::getSize() {
+  return size;
 }
 
 template <typename T>
