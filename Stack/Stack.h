@@ -19,11 +19,12 @@ class Stack {
   public:
     Stack();
     ~Stack();
-    StackNode<T>& pop();
+    StackNode<T>* pop();
     void push(StackNode<T> &n);
     void push(T data);
-    StackNode<T>& peek();
+    StackNode<T>* peek();
     bool isEmpty();
+    void print();
     void clear();
 };
 
@@ -41,7 +42,7 @@ Stack<T>::~Stack() {
 }
 
 template <typename T>
-StackNode<T>& Stack<T>::pop() {
+StackNode<T>* Stack<T>::pop() {
   if (top) {
     tmp = top;
     top = tmp->next;
@@ -69,7 +70,7 @@ void Stack<T>::push(T data) {
 }
 
 template <typename T>
-StackNode<T>& Stack<T>::peek() {
+StackNode<T>* Stack<T>::peek() {
   return top;
 }
 
@@ -80,6 +81,19 @@ bool Stack<T>::isEmpty() {
   } else {
     return false;
   }
+}
+
+template <typename T>
+void Stack<T>::print() {
+  tmp = top;
+  while(tmp) {
+    cout << tmp->data;
+    tmp = tmp->next;
+    if (tmp) {
+      cout << " -> ";
+    }
+  }
+  cout << " [size=" << size << "]" << '\n';
 }
 
 template <typename T>
