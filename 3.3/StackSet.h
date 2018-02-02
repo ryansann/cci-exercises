@@ -3,7 +3,7 @@
 // The Stacks we will use our the implementation in
 // We'll never have a stack with 0 elements in this implementation
 //
-//        [ size = 8, capacity = 5 ]
+//        [ numStacks = 2, numElements = 8, capacity = 5 ]
 //         ___     ___     ___     ___     ___
 //        | e |-->| d |-->| c |-->| b |-->| a |      
 //         ---     ---     ---     ---     ---
