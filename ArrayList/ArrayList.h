@@ -3,41 +3,33 @@
 // NOTE: Definitions must go in .h file because of templating
 #pragma once
 
-// Included Dependencies
 #include <iostream>
 
-// Class Interface
+using namespace std;
+
 template <typename T>
 class ArrayList {
-  
   private:
     const static int initialCapacity = 2; // initial number of elements
     const static int reallocationMultiplier = 2; // multiplier for reallocating array
     int size; // this tracks numnber of elements in arrayList
     int maxCapacity; // this tracks current max capacity of arrayList
     T *arrayList;
-
   public:
     // instance ops
     ArrayList();
     ArrayList(const ArrayList<T> &original);
     ~ArrayList();
-
     // operator overloads
     T &operator[](int index);
-
     // getters
     int getSize();
-
     // array ops
     void appendElement(T &element);
     void deleteElement(unsigned int index);
     void clear();
     void print();
-
 };
-
-using namespace std;
 
 // Class Definitions
 template <typename T>

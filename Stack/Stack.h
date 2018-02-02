@@ -33,6 +33,7 @@ template <typename T>
 Stack<T>::Stack() {
   size = 0;
   top = 0;
+  tmp = 0;
 }
 
 template <typename T>
@@ -105,5 +106,6 @@ void Stack<T>::clear() {
   }
   size = 0;
   top = 0;
+  tmp = 0;
   return;
 }
