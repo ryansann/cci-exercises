@@ -1,6 +1,12 @@
 // Queue.h
 // Templated Queue Implemented with doubly linked list
-// NOTE: Definitions must go in .h file because of templating
+//
+//  last (enqueue)              first (dequeue)
+//    |   next/prev              |
+//   ___   |  ___      ___      ___
+//  | a |<-->| b |<-->| c |<-->| d |    [ size = 4 ]
+//   ---      ---      ---      ---
+//
 #pragma once
 
 #include <iostream>
@@ -17,9 +23,9 @@ class Queue {
   public:
     Queue();
     ~Queue();
-    QueueNode<T>* remove();
-    void add(QueueNode<T> &n);
-    void add(T data);
+    QueueNode<T>* dequeue();
+    void enqueue(QueueNode<T> *n);
+    void enqueue(T data);
     QueueNode<T>* peek();
     bool isEmpty();
     void print();
@@ -32,6 +38,7 @@ Queue<T>::Queue() {
   size = 0;
   first = 0;
   last = 0;
+  tmp = 0;
 }
 
 template <typename T>
@@ -41,26 +48,40 @@ Queue<T>::~Queue() {
 }
 
 template <typename T>
-QueueNode<T>* Queue<T>::remove() {
+QueueNode<T>* Queue<T>::dequeue() {
   if (first) {
-
-  } else {
+    tmp = first;
+    first = first->prev; // new first node
+    first->next = 0; // no node in front of first
+    tmp->prev = 0; // dequeue'd node has no prev (and next since it was first previously)
+    size--; // list is one node smaller now
+    return tmp;
+  } else { // nothing to dequeue
     return 0;
   }
 }
 
 template <typename T>
-void Queue<T>::add(QueueNode<T> &n) {
-  
+void Queue<T>::enqueue(QueueNode<T> *n) {
+  if (last) { // we have a node to connect to
+    tmp = last;
+    last = n; // new last
+    tmp->prev = last; // tmp is now second to last
+    last->next = tmp; // tmp is after new last
+  } else { // this is the first node (gets first and last pointers)
+    first = n; // new first
+    last = n; // new last
+    n->prev = 0; // no prev since it is last
+    n->next = 0; // no next since it is first
+  }
   size++;
 }
 
 template <typename T>
-void Queue<T>::add(T data) {
+void Queue<T>::enqueue(T data) {
   QueueNode<T> *n = new QueueNode<T>();
   n->data = data;
-
-  size++;
+  enqueue(n);
 }
 
 template <typename T>
@@ -92,8 +113,9 @@ void Queue<T>::print() {
 
 template <typename T>
 void Queue<T>::clear() {
+  // delete from front to back to enforce FIFO
   while(first) {
-    tmp = first->next;
+    tmp = first->prev;
     delete first;
     first = tmp;
   }

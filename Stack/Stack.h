@@ -1,6 +1,11 @@
 // Stack.h
-// Stack to store data
-// NOTE: Definitions must go in .h file because of templating
+// Stack implemented with a singly linked list
+//    top
+//     |   next
+//    ___  |  ___     ___     ___     ___
+//   | a |-->| b |-->| c |-->| d |-->| e |     [ size = 5 ] 
+//    ---     ---     ---     ---     ---
+//
 #pragma once
 
 // Included Dependencies
@@ -20,7 +25,7 @@ class Stack {
     Stack();
     ~Stack();
     StackNode<T>* pop();
-    void push(StackNode<T> &n);
+    void push(StackNode<T> *n);
     void push(T data);
     StackNode<T>* peek();
     bool isEmpty();
@@ -55,7 +60,7 @@ StackNode<T>* Stack<T>::pop() {
 }
 
 template <typename T>
-void Stack<T>::push(StackNode<T> &n) {
+void Stack<T>::push(StackNode<T> *n) {
   n->next = top;
   top = n;
   size++;
@@ -65,9 +70,7 @@ template <typename T>
 void Stack<T>::push(T data) {
   StackNode<T> *n = new StackNode<T>();
   n->data = data;
-  n->next = top;
-  top = n;
-  size++;
+  push(n);
 }
 
 template <typename T>
