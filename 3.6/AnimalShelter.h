@@ -5,39 +5,38 @@
 //      last (enqueueDog)              first (dequeueDog)
 //          |   next/prev              |
 //         ___   |  ___      ___      ___
-// dogs = | 4 |<-->| 3 |<-->| 2 |<-->| 1 |    [ size = 4 ]
+// dogs = | 7 |<-->| 4 |<-->| 3 |<-->| 2 |    [ size = 4 ]
 //         ---      ---      ---      ---    
 //                  
 //      last (enqueueCat)              first (dequeueCat)
 //          |   next/prev              |
 //         ___   |  ___      ___      ___
-// cats = | 4 |<-->| 3 |<-->| 2 |<-->| 1 |    [ size = 4 ]
+// cats = | 8 |<-->| 6 |<-->| 5 |<-->| 1 |    [ size = 4 ]
 //         ---      ---      ---      ---    
 //
 #pragma once
 
-#include <iostream>
+#include "Animal.h"
 #include "../Queue/Queue.h"
 #include "../Queue/QueueNode.h"
 
-using namespace std;
-
-template <typename T>
 class AnimalShelter {
   private:
-    Queue<T> *dogs, *cats;
+    Queue<Animal> *dogs, *cats;
+    int curAnimal;
   public:
     AnimalShelter();
     ~AnimalShelter();
-    QueueNode<T>* dequeueAny();
-    QueueNode<T>* dequeueDog();
-    QueueNode<T>* dequeueCat();
-    void enqueue(QueueNode<T> *n);
-    void enqueue(T data);
-    QueueNode<T>* peekDogs();
-    QueueNode<T>* peekCats();
+    QueueNode<Animal>* dequeueAny();
+    QueueNode<Animal>* dequeueDog();
+    QueueNode<Animal>* dequeueCat();
+    void enqueue(QueueNode<Animal> *n);
+    void enqueue(Animal animal);
+    QueueNode<Animal>* peekDogs();
+    QueueNode<Animal>* peekCats();
     bool isEmptyDogs();
     bool isEmptyCats();
+    bool isEmpty();
     void printDogs();
     void printCats();
     void print();
@@ -45,88 +44,3 @@ class AnimalShelter {
     void clearCats();
     void clear();
 };
-
-template <typename T>
-AnimalShelter<T>::AnimalShelter() {
- 
-}
-
-template <typename T>
-AnimalShelter<T>::~AnimalShelter() {
-  clear();
-}
-
-template <typename T>
-QueueNode<T> *AnimalShelter<T>::dequeueAny() {
-
-}
-
-template <typename T>
-QueueNode<T> *AnimalShelter<T>::dequeueDog() {
-
-}
-
-template <typename T>
-QueueNode<T> *AnimalShelter<T>::dequeueCat() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::enqueue(QueueNode<T> *n) {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::enqueue(T data) {
-
-}
-
-template <typename T>
-QueueNode<T> *AnimalShelter<T>::peekCats() {
-
-}
-
-template <typename T>
-QueueNode<T> *AnimalShelter<T>::peekDogs() {
-
-}
-
-template <typename T>
-bool AnimalShelter<T>::isEmptyDogs() {
-
-}
-
-template <typename T>
-bool AnimalShelter<T>::isEmptyCats() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::printDogs() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::printCats() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::print() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::clearDogs() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::clearCats() {
-
-}
-
-template <typename T>
-void AnimalShelter<T>::clear() {
-
-}
