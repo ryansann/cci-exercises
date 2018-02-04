@@ -13,10 +13,13 @@ class GraphNode {
   public:
     GraphNode();
     GraphNode(T d);
+    ~GraphNode();
     void addAdjacentNode(GraphNode<T> *n);
     vector<GraphNode<T>*> getAdjacentNodes();
     T getData();
     void setData(T d);
+    void clear();
+    friend ostream& operator<<(ostream &os, GraphNode<T> &n);
 };
 
 template <typename T>
@@ -47,4 +50,15 @@ T GraphNode<T>::getData() {
 template <typename T>
 void GraphNode<T>::setData(T d) {
   data = d;
+}
+
+template <typename T>
+void GraphNode<T>::clear() {
+  
+}
+
+
+template <typename T>
+ostream& operator<<(ostream &os, GraphNode<T> &n) {
+
 }
