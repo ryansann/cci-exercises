@@ -16,4 +16,5 @@ class Graph {
     void print();
     int getNumEdges();
     int getNumNodes();
+    bool isRouteBetween(int src, int dest); // 4.1
 };
