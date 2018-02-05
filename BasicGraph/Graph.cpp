@@ -4,7 +4,7 @@
 #include "Graph.h"
 
 Graph::Graph() {
-  size = 0;
+  numEdges = 0;
 }
 
 // this method adds an entry for dest into src's adj list
@@ -18,14 +18,15 @@ void Graph::addEdge(int src, int dest) {
     srcAdjList.push_back(dest);
     adjList[src] = srcAdjList;
   }
-  size++;
+  numEdges++;
   if (adjList.find(dest) == adjList.end()) { // no entry for dest in adjList
     adjList[dest] = std::vector<int>();
   }
 }
 
+// print the entire graph
 void Graph::print() {
-  std::cout << "Graph:\n";
+  std::cout << "Graph (nodes = " << getNumNodes() << ", edges = " << getNumEdges() << "):\n";
   for(std::map<int, std::vector<int> >::iterator it = adjList.begin(); it != adjList.end(); it++) {
     std::cout << it->first << " --> ";
     for(std::vector<int>::iterator vit = it->second.begin(); vit != it->second.end(); vit++) {
@@ -36,4 +37,12 @@ void Graph::print() {
     }
     std::cout << '\n';
   }
+}
+
+int Graph::getNumEdges() {
+  return numEdges;
+}
+
+int Graph::getNumNodes() {
+  return adjList.size();
 }
